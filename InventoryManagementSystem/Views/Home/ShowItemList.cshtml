@@ -1,0 +1,63 @@
+﻿@model IEnumerable<InventoryManagementSystem.Models.Item>
+@using System.Collections.Generic;.
+
+@{
+    ViewBag.Title = "ShowItemList";
+}
+
+<h2>ShowItemList</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.quantity)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.product.name)
+        </th>
+        <th>
+            Total Price
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.quantity)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.product.name)
+        </td>
+        <td>
+            @(item.quantity * item.product.sellingPrice)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+        </td>
+    </tr>
+    }
+    <tr>
+        <td> </td>
+        <td> </td>
+        <td>
+            @{
+                double totalPrice = 0;
+                foreach (var i in Model)
+                {
+                    totalPrice = totalPrice + (i.quantity * i.product.sellingPrice);
+                }
+                <strong> @totalPrice </strong>
+            }
+        </td>
+    </tr>
+
+</table>
+
+@Html.ActionLink("Back to product list", "ShowProducts", "Home")

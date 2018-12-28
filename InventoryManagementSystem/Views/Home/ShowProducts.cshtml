@@ -1,0 +1,59 @@
+﻿@model IEnumerable<InventoryManagementSystem.Models.Product>
+@using InventoryManagementSystem.Models;
+
+@{
+    ViewBag.Title = "ShowProducts";
+}
+
+<h2>ShowProducts</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.sellingPrice)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.quantity)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.productType.Name)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.sellingPrice)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.quantity)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.productType.Name)
+            </td>
+
+            <td>
+                @Html.ActionLink("Add to cart", "AddToCart", "Home", new { productId = item.id }, null)
+                @Html.ActionLink("Edit", "Edit", new { id = item.id }) |
+                @Html.ActionLink("Details", "Details", new { id = item.id }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.id })
+            </td>
+        </tr>
+    }
+
+
+   
+
+</table>
