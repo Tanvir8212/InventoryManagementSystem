@@ -19,7 +19,8 @@ namespace InventoryManagementSystem.Controllers
 
         public ActionResult Index()
         {
-            return View();
+
+            return RedirectToAction("ShowProducts", "Home");
         }
 
         public ActionResult About()
