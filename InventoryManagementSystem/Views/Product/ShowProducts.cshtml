@@ -8,7 +8,7 @@
 <h2>ShowProducts</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Add New Product", "Create",null, new { @class = "btn btn-info" })
 </p>
 <table class="table">
     <tr>
@@ -45,10 +45,8 @@
             </td>
 
             <td>
-                @Html.ActionLink("Add to cart", "AddToCart", "Home", new { productId = item.id }, null)
-                @Html.ActionLink("Edit", "Edit", new { id = item.id }) |
-                @Html.ActionLink("Details", "Details", new { id = item.id }) |
-                @Html.ActionLink("Delete", "Delete", new { id = item.id })
+                @Html.ActionLink("Add to cart", "AddToCart", "Product", new { productId = item.id }, null)
+                 
             </td>
         </tr>
     }

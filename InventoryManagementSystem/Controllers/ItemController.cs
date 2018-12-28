@@ -1,0 +1,51 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.Mvc;
+using InventoryManagementSystem.Models;
+
+namespace InventoryManagementSystem.Controllers
+{
+    public class ItemController : Controller
+    {
+        private ApplicationDbContext dbContext;
+
+        public ItemController()
+        {
+            dbContext = new ApplicationDbContext();
+        }
+
+        public ActionResult ConfirmItemList()
+        {
+            var itemList = (List<Item>)Session["cart"];
+
+            if(itemList == null)
+            {
+                return HttpNotFound("You have nothing in cart... How the hell are you here ?????");
+            }
+            else
+            {
+                Transaction transaction = new Transaction();
+                transaction.items = itemList;
+                transaction.dateTime = DateTime.Now;
+
+
+                double totalPrice = 0;
+                foreach(Item i in itemList)
+                {
+                    totalPrice = totalPrice + (i.product.sellingPrice * i.quantity);
+                }
+
+                transaction.totalPrice = totalPrice;
+
+                dbContext.transactions.Add(transaction);
+                dbContext.SaveChanges();
+                
+            }
+            Transaction tran = dbContext.transactions.ToList().Last();
+
+            return RedirectToAction("ShowTransaction","Transaction", tran);
+        }
+    }
+}

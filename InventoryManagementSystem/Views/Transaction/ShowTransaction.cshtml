@@ -1,0 +1,54 @@
+﻿@model InventoryManagementSystem.Models.Transaction
+
+@{
+    ViewBag.Title = "ShowTransaction";
+}
+
+<h2>ShowTransaction</h2>
+
+<div>
+    <h4>Transaction</h4>
+    <hr />
+    <dl class="dl-horizontal">
+
+        <table>
+            <thead>
+                <th>Product Name</th>
+                <th>Product Quantity</th>
+                <th>Product Price</th>
+            </thead>
+
+                <tbody>
+                    @foreach (var item in Model.items)
+                    {
+                        <tr>
+                            <td>@item.product.name</td>
+                            <td>@item.quantity</td>
+                            <td>@item.product.sellingPrice</td>
+                        </tr>
+                    }
+                </tbody>
+        </table>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.totalPrice)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.totalPrice)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.dateTime)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.dateTime)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

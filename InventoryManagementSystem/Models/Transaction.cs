@@ -10,7 +10,8 @@ namespace InventoryManagementSystem.Models
     {
         [Key]
         public int id { get; set; }
-        public List<Product> products { get; set; }
+
+        public List<Item> items { get; set; }
         public double totalPrice { get; set; }
         public double profit { get; set; }
         public Customer customer { get; set; }

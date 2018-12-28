@@ -196,7 +196,10 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ItemController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\ProductController.cs" />
+    <Compile Include="Controllers\TransactionController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -215,6 +218,42 @@
     <Compile Include="Migrations\201812281630261_addedSomeRandomProductToShow.cs" />
     <Compile Include="Migrations\201812281630261_addedSomeRandomProductToShow.Designer.cs">
       <DependentUpon>201812281630261_addedSomeRandomProductToShow.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201812282026262_addedItemTable.cs" />
+    <Compile Include="Migrations\201812282026262_addedItemTable.Designer.cs">
+      <DependentUpon>201812282026262_addedItemTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201812282037386_newMigration.cs" />
+    <Compile Include="Migrations\201812282037386_newMigration.Designer.cs">
+      <DependentUpon>201812282037386_newMigration.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201812282039399_newMigration2.cs" />
+    <Compile Include="Migrations\201812282039399_newMigration2.Designer.cs">
+      <DependentUpon>201812282039399_newMigration2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201812282041293_newMigration21.cs" />
+    <Compile Include="Migrations\201812282041293_newMigration21.Designer.cs">
+      <DependentUpon>201812282041293_newMigration21.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201812282043398_newMigration3.cs" />
+    <Compile Include="Migrations\201812282043398_newMigration3.Designer.cs">
+      <DependentUpon>201812282043398_newMigration3.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201812282045362_nn.cs" />
+    <Compile Include="Migrations\201812282045362_nn.Designer.cs">
+      <DependentUpon>201812282045362_nn.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201812282046048_nnn.cs" />
+    <Compile Include="Migrations\201812282046048_nnn.Designer.cs">
+      <DependentUpon>201812282046048_nnn.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201812282046500_nnnn.cs" />
+    <Compile Include="Migrations\201812282046500_nnnn.Designer.cs">
+      <DependentUpon>201812282046500_nnnn.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201812282047426_transactionTableDone.cs" />
+    <Compile Include="Migrations\201812282047426_transactionTableDone.Designer.cs">
+      <DependentUpon>201812282047426_transactionTableDone.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -290,11 +329,15 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
-    <Content Include="Views\Home\ShowProducts.cshtml" />
-    <Content Include="Views\Home\ShowItemList.cshtml" />
+    <Content Include="Views\Product\Index.cshtml" />
+    <Content Include="Views\Product\ShowItemList.cshtml" />
+    <Content Include="Views\Product\ShowProducts.cshtml" />
+    <Content Include="Views\Product\Create.cshtml" />
+    <Content Include="Views\Transaction\ShowTransaction.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\Item\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
@@ -321,6 +364,33 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201812281630261_addedSomeRandomProductToShow.resx">
       <DependentUpon>201812281630261_addedSomeRandomProductToShow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201812282026262_addedItemTable.resx">
+      <DependentUpon>201812282026262_addedItemTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201812282037386_newMigration.resx">
+      <DependentUpon>201812282037386_newMigration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201812282039399_newMigration2.resx">
+      <DependentUpon>201812282039399_newMigration2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201812282041293_newMigration21.resx">
+      <DependentUpon>201812282041293_newMigration21.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201812282043398_newMigration3.resx">
+      <DependentUpon>201812282043398_newMigration3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201812282045362_nn.resx">
+      <DependentUpon>201812282045362_nn.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201812282046048_nnn.resx">
+      <DependentUpon>201812282046048_nnn.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201812282046500_nnnn.resx">
+      <DependentUpon>201812282046500_nnnn.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201812282047426_transactionTableDone.resx">
+      <DependentUpon>201812282047426_transactionTableDone.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

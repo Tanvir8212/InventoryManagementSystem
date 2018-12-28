@@ -27,6 +27,7 @@ namespace InventoryManagementSystem.Models
         public DbSet<Supplier> suppliers { get; set; }
         public DbSet<PurchaseLot> purchaseLots { get; set; }
         public DbSet<ProductType> productTypes { get; set; }
+        public DbSet<Item> items { get; set; } // Temporary table for transactions
 
         public ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)
