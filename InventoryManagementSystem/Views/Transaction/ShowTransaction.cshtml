@@ -10,25 +10,7 @@
     <h4>Transaction</h4>
     <hr />
     <dl class="dl-horizontal">
-
-        <table>
-            <thead>
-                <th>Product Name</th>
-                <th>Product Quantity</th>
-                <th>Product Price</th>
-            </thead>
-
-                <tbody>
-                    @foreach (var item in Model.items)
-                    {
-                        <tr>
-                            <td>@item.product.name</td>
-                            <td>@item.quantity</td>
-                            <td>@item.product.sellingPrice</td>
-                        </tr>
-                    }
-                </tbody>
-        </table>
+        
 
         <dt>
             @Html.DisplayNameFor(model => model.totalPrice)

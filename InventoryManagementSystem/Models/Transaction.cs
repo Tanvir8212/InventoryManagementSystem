@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
 
@@ -11,7 +12,8 @@ namespace InventoryManagementSystem.Models
         [Key]
         public int id { get; set; }
 
-        public List<Item> items { get; set; }
+        [ForeignKey("Item")]
+        public List<int> itemIds { get; set; }
         public double totalPrice { get; set; }
         public double profit { get; set; }
         public Customer customer { get; set; }

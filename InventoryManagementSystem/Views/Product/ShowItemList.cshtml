@@ -26,22 +26,22 @@
 
     @foreach (var item in Model)
     {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.quantity)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.product.name)
-        </td>
-        <td>
-            @(item.quantity * item.product.sellingPrice)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
-        </td>
-    </tr>
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.quantity)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.product.name)
+            </td>
+            <td>
+                @(item.quantity * item.product.sellingPrice)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+            </td>
+        </tr>
     }
     <tr>
         <td> </td>
@@ -60,6 +60,21 @@
 
 </table>
 
-@Html.ActionLink("Back to product list", "ShowProducts", "Product")
+<table style="text-align:center; width:60%;">
+    <tbody>
+    <td>
+        @Html.ActionLink("Back to product list", "ShowProducts", "Product", null, new { @class = "btn btn-info" })
+    </td>
+    <td>
+        @Html.ActionLink("Confrim Order", "ConfirmItemList", "Item", null, new { @class = "btn btn-danger" })
+    </td>
+    <td>
+        @Html.ActionLink("Reset Cart", "ResetCart", "Item", null, new { @class = "btn btn-info" })
+    </td>
+    </tbody>
+</table>
 
-@Html.ActionLink("Confrim Order", "ConfirmItemList", "Item");
+
+
+
+

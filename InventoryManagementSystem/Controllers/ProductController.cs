@@ -40,6 +40,9 @@ namespace InventoryManagementSystem.Controllers
         public ActionResult AddToCart(int productID)
         {
             var product = dbContext.products.SingleOrDefault(p => p.id == productID);
+
+            // return View("ShowProducts", "Product", product);
+            Item item = new Item();
             if (product != null)
             {
                 int quantity = 1;
@@ -56,15 +59,19 @@ namespace InventoryManagementSystem.Controllers
 
                 if (quantity == 1)
                 {
-                    Item item = new Item(product, quantity);
+                    
+                    item.product = product;
+                    item.quantity = quantity;
                     itemList.Add(item);
                 }
 
 
             }
 
+           // return View(item);
+           // return View("Temp", "Product", item);
 
-            return RedirectToAction("ShowItemList", "Product");
+           return RedirectToAction("ShowItemList", "Product");
         }
 
         public ActionResult ShowItemList()

@@ -195,6 +195,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ItemController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
@@ -254,6 +255,22 @@
     <Compile Include="Migrations\201812282047426_transactionTableDone.cs" />
     <Compile Include="Migrations\201812282047426_transactionTableDone.Designer.cs">
       <DependentUpon>201812282047426_transactionTableDone.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201812290929326_item.cs" />
+    <Compile Include="Migrations\201812290929326_item.Designer.cs">
+      <DependentUpon>201812290929326_item.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201812290930200_itemListAdded.cs" />
+    <Compile Include="Migrations\201812290930200_itemListAdded.Designer.cs">
+      <DependentUpon>201812290930200_itemListAdded.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201812290936110_itemListAdded1.cs" />
+    <Compile Include="Migrations\201812290936110_itemListAdded1.Designer.cs">
+      <DependentUpon>201812290936110_itemListAdded1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201812291015304_addedAdmin.cs" />
+    <Compile Include="Migrations\201812291015304_addedAdmin.Designer.cs">
+      <DependentUpon>201812291015304_addedAdmin.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -334,6 +351,7 @@
     <Content Include="Views\Product\ShowProducts.cshtml" />
     <Content Include="Views\Product\Create.cshtml" />
     <Content Include="Views\Transaction\ShowTransaction.cshtml" />
+    <Content Include="Views\Admin\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -391,6 +409,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201812282047426_transactionTableDone.resx">
       <DependentUpon>201812282047426_transactionTableDone.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201812290929326_item.resx">
+      <DependentUpon>201812290929326_item.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201812290930200_itemListAdded.resx">
+      <DependentUpon>201812290930200_itemListAdded.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201812290936110_itemListAdded1.resx">
+      <DependentUpon>201812290936110_itemListAdded1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201812291015304_addedAdmin.resx">
+      <DependentUpon>201812291015304_addedAdmin.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

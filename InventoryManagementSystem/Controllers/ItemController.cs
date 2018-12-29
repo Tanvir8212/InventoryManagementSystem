@@ -27,7 +27,7 @@ namespace InventoryManagementSystem.Controllers
             else
             {
                 Transaction transaction = new Transaction();
-                transaction.items = itemList;
+                //transaction.itemIds = itemList;
                 transaction.dateTime = DateTime.Now;
 
 
@@ -44,8 +44,15 @@ namespace InventoryManagementSystem.Controllers
                 
             }
             Transaction tran = dbContext.transactions.ToList().Last();
+            Session["cart"] = new List<Item>();  // Clearing the session after confirm
 
-            return RedirectToAction("ShowTransaction","Transaction", tran);
+            return RedirectToAction("ShowTransaction","Transaction",tran);
+        }
+
+        public ActionResult ResetCart()
+        {
+            Session["cart"] = new List<Item>();
+            return RedirectToAction("Index", "Home");
         }
     }
 }
