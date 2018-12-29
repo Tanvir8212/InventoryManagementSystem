@@ -37,7 +37,7 @@ namespace InventoryManagementSystem.Controllers
             return View(products);
         }
 
-        public ActionResult AddToCart(int productID)
+      public ActionResult AddToCart(int productID)
         {
             var product = dbContext.products.SingleOrDefault(p => p.id == productID);
 
@@ -72,7 +72,46 @@ namespace InventoryManagementSystem.Controllers
            // return View("Temp", "Product", item);
 
            return RedirectToAction("ShowItemList", "Product");
-        }
+        } 
+
+      /*  public ActionResult AddToCart()
+        {
+            
+            int productID = int.Parse (Session["addToCartProduct"].ToString());
+            var product = dbContext.products.SingleOrDefault(p => p.id == productID);
+
+            // return View("ShowProducts", "Product", product);
+            Item item = new Item();
+            if (product != null)
+            {
+                int quantity = 1;
+
+                var itemList = (List<Item>)Session["cart"];
+                foreach (var i in itemList)
+                {
+                    if (i.product.id == product.id)
+                    {
+                        i.quantity++;
+                        quantity++;
+                    }
+                }
+
+                if (quantity == 1)
+                {
+
+                    item.product = product;
+                    item.quantity = quantity;
+                    itemList.Add(item);
+                }
+
+
+            }
+
+            // return View(item);
+            // return View("Temp", "Product", item);
+
+            return RedirectToAction("ShowItemList", "Product");
+        }*/
 
         public ActionResult ShowItemList()
         {

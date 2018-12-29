@@ -1,57 +1,84 @@
 ﻿@model IEnumerable<InventoryManagementSystem.Models.Product>
+
 @using InventoryManagementSystem.Models;
+
+@Scripts.Render("~/bundles/lib")
 
 @{
     ViewBag.Title = "ShowProducts";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+@section scripts
+{
+    <script type="text/javascript">
+        $(document).ready(function () {
+
+            $("#products").DataTable();
+
+        });
+    </script>
 }
 
 <h2>ShowProducts</h2>
 
 <p>
-    @Html.ActionLink("Add New Product", "Create",null, new { @class = "btn btn-info" })
+    @Html.ActionLink("Add New Product", "Create", null, new { @class = "btn btn-info" })
 </p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.name)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.sellingPrice)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.quantity)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.productType.Name)
-        </th>
-        <th></th>
-    </tr>
+<table class="table" id="products">
+    <thead>
 
-    @foreach (var item in Model)
-    {
+
         <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.sellingPrice)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.quantity)
-            </td>
-
-            <td>
-                @Html.DisplayFor(modelItem => item.productType.Name)
-            </td>
-
-            <td>
-                @Html.ActionLink("Add to cart", "AddToCart", "Product", new { productId = item.id }, null)
-                 
-            </td>
+            <th>
+                @Html.DisplayNameFor(model => model.name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.sellingPrice)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.quantity)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.productType.Name)
+            </th>
+            <th></th>
         </tr>
-    }
+    </thead>
+
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.sellingPrice)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.quantity)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.productType.Name)
+                </td>
+
+                <td>
+                    @Html.ActionLink("Add to cart", "AddToCart", "Product", new { productId = item.id }, null)
+
+                </td>
+            </tr>
+        }
 
 
-   
+    </tbody>
 
 </table>
+
+<ul id="unList"></ul>
+
+
+
+
