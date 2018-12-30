@@ -1,7 +1,118 @@
-﻿
+﻿@model InventoryManagementSystem.Models.AdminViewModel
 @{
     ViewBag.Title = "Index";
 }
 
-<h2>Hello ADMIN</h2>
+@section scripts
+{
+    <script type="text/javascript">
+        $(document).ready(function () {
+            
+
+            // Loading the datatable
+            $("#lowProductTable").DataTable(
+                {
+                    ajax: {
+                        url: '/api/products?quantity=low',
+                        dataSrc: ""
+                    },
+                    columns: [
+                        {
+                            data: "name"
+                        },
+                        {
+                            data: "quantity"
+                        },
+                        {
+                            data: "sellingPrice"
+                        },
+                        {
+                            data: "id",
+                            render: function (data, type, row) {
+                                return '<a href="http://localhost:51109/api/products/' + data + '">Order to supplier</a>';
+                            }
+                        }
+
+                    ]
+
+                }
+            );
+
+            // First time loading both are hidden
+            $('#transactionDiv').hide();
+           
+
+            $('#showLowQuantityProduct').click(function () {
+                $('#transactionDiv').hide();
+                $("#lowProductTable").parents('div.dataTables_wrapper').first().show();
+
+            });
+
+            $('#showTransaction').click(
+                function () {
+
+                    // Hide the low quantity product table
+                    $("#lowProductTable").parents('div.dataTables_wrapper').first().hide();;
+                    $('#transactionDiv').show();
+
+                }
+            );
+
+
+
+        });
+    </script>
+}
+
+<h1>Hello Admin...</h1>
+
+<button id="showLowQuantityProduct" class="btn btn-danger">Show low quantity product</button>
+
+<button id="showTransaction" class="btn btn-primary">Show transaction</button>
+
+<table class="table dataTable" id="lowProductTable">
+    <thead>
+        <tr>
+            <th>Product name</th>
+            <th>Product quantity</th>
+            <th>Selling price</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+
+    <tbody>
+
+    </tbody>
+
+</table>
+
+<div id="transactionDiv">
+
+    Today: <strong> @DateTime.Now</strong> 
+
+    <h3 style="text-align:center; color:saddlebrown;"> Todays transaction </h3>
+
+    <table class="table">
+        <thead>
+            <th> ID </th>
+            <th> Amount </th>
+            <th> Time </th>
+        </thead>
+
+        <tbody>
+
+            @foreach(var t in Model.transactions)
+            {
+                <tr>
+                    <td>@t.id</td>
+                    <td>@t.totalPrice</td>
+                    <td>@t.dateTime</td>
+                </tr>
+            }
+
+        </tbody>
+
+    </table>
+
+</div>
 

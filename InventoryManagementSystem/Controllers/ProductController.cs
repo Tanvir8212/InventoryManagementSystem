@@ -41,37 +41,46 @@ namespace InventoryManagementSystem.Controllers
         {
             var product = dbContext.products.SingleOrDefault(p => p.id == productID);
 
-            // return View("ShowProducts", "Product", product);
-            Item item = new Item();
-            if (product != null)
+            if (product.quantity > 0)
             {
-                int quantity = 1;
-
-                var itemList = (List<Item>)Session["cart"];
-                foreach (var i in itemList)
+                // return View("ShowProducts", "Product", product);
+                Item item = new Item();
+                if (product != null)
                 {
-                    if (i.product.id == product.id)
+                    int quantity = 1;
+
+                    var itemList = (List<Item>)Session["cart"];
+                    foreach (var i in itemList)
                     {
-                        i.quantity++;
-                        quantity++;
+                        if (i.product.id == product.id)
+                        {
+                            i.quantity++;
+                            quantity++;
+                        }
                     }
+
+                    if (quantity == 1)
+                    {
+
+                        item.product = product;
+                        item.quantity = quantity;
+                        itemList.Add(item);
+                    }
+
+
                 }
 
-                if (quantity == 1)
-                {
-                    
-                    item.product = product;
-                    item.quantity = quantity;
-                    itemList.Add(item);
-                }
+                // return View(item);
+                // return View("Temp", "Product", item);
 
-
+                return RedirectToAction("ShowItemList", "Product");
+            }
+            else
+            {
+                return RedirectToAction("ShowProducts", "Product");
             }
 
-           // return View(item);
-           // return View("Temp", "Product", item);
-
-           return RedirectToAction("ShowItemList", "Product");
+            
         } 
 
       /*  public ActionResult AddToCart()

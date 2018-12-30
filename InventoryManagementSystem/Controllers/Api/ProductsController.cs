@@ -25,11 +25,24 @@ namespace InventoryManagementSystem.Controllers.Api
            return dbContext.products.ToList().Select(Mapper.Map<Product,ProductDto>);
         }
 
-        // GET/  api/products/5
+        // GET/  api/products/6
         public ProductDto GetProduct(int id)
         {
             var product = dbContext.products.SingleOrDefault(p => p.id == id);
             return Mapper.Map<Product,ProductDto>(product);
+        }
+
+        // GET/ api/products?quantity=low
+        public IEnumerable<ProductDto> GetProduct(string quantity)
+        {
+            var products = dbContext.products.ToList().Select(Mapper.Map<Product, ProductDto>);
+
+            if (quantity == "low")
+            {
+                products = dbContext.products.Where(p => p.quantity <10).Select(Mapper.Map<Product, ProductDto>);
+            }
+            
+            return products;
         }
 
         // POST/ api/products
@@ -52,7 +65,7 @@ namespace InventoryManagementSystem.Controllers.Api
             return productDto;
         }
 
-        // PUT/ api/products/5
+        // PUT/ api/products/6
         [HttpPut]
         public void UpdateProduct(int productID,ProductDto updatedProductDto)
         {
@@ -71,7 +84,7 @@ namespace InventoryManagementSystem.Controllers.Api
             
         }
 
-        // DELETE/ api/products/5
+        // DELETE/ api/products/6
         [HttpDelete]
         public void DeleteProduct(int productID)
         {

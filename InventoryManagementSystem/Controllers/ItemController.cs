@@ -35,6 +35,14 @@ namespace InventoryManagementSystem.Controllers
                 foreach(Item i in itemList)
                 {
                     totalPrice = totalPrice + (i.product.sellingPrice * i.quantity);
+
+                    // After confirming updating the quantity of the inventory
+                    var product = dbContext.products.SingleOrDefault(p => p.id == i.product.id);
+                    if (product.quantity > 0)
+                    {
+                        product.quantity = product.quantity - i.quantity;
+                    }
+                    
                 }
 
                 transaction.totalPrice = totalPrice;

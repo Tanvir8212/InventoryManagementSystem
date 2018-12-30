@@ -25,6 +25,7 @@
 
 <p>
     @Html.ActionLink("Add New Product", "Create", null, new { @class = "btn btn-info" })
+    @Html.ActionLink("Show the cart", "ShowItemList","Product",  new { @class = "btn btn-success" })
 </p>
 <table class="table" id="products">
     <thead>
@@ -77,7 +78,7 @@
 
 </table>
 
-<ul id="unList"></ul>
+
 
 
 

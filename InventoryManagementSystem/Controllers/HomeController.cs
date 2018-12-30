@@ -10,12 +10,14 @@ namespace InventoryManagementSystem.Controllers
 {
     public class HomeController : Controller
     {
-       
+        
         public ActionResult Index()
         {
             if (User.IsInRole("Admin"))
             {
                 // Redirect to admin controller
+                
+
                 return RedirectToAction("Index", "Admin");
             }
             return RedirectToAction("ShowProducts", "Product");
